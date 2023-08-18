@@ -1,0 +1,23 @@
+# Configuration for Cog ⚙️
+
+build:
+  gpu: true
+  system_packages:
+    - cmake
+    - zip
+    - ffmpeg
+    - libsm6 
+    - libxext6
+  python_version: "3.8"
+  python_packages:
+    - "torchvision"
+    - "insightface==0.7.3"
+    - "onnxruntime-gpu"
+    - "gfpgan"
+  run:
+    - "mkdir -p /root/.insightface/models/buffalo_l/"
+    - "wget https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip"
+    - "unzip buffalo_l.zip -d /root/.insightface/models/buffalo_l"
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
